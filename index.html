@@ -23,18 +23,22 @@
                     <button id="single" class="selected">Single</button>
                     <button id="married">Married</button>
                 </div>
-                <p class="question">You annual income is:</p>
-                <p id="income"></p>
+                <p class="question">Your reported income for 2010 was: <span id="income"></span></p>
                 <div id="slider"></div>
-                <p>Annual taxes paid to the city of Zürich: <span id="taxes"></span></p>
+                <p>Annual taxes paid to the city of Zürich: <span id="taxes"></span>, this money lasted the city for <span id="duration"></span> seconds.</p>
 
-                <p>Pretty viz here. Pretty viz here. Pretty viz here. Pretty viz here. Pretty viz here. Pretty viz here. Pretty viz here. Pretty viz here. Pretty viz here. Pretty viz here. Pretty viz here. Pretty viz here. Pretty viz here. Pretty viz here. Pretty viz here. Pretty viz here.</p>
+                <div class="chart"></div>
             </div>
             <footer>
-                Logos here (eZurich, make opendata, creative commons, ..?)
+                <p>Data Sources:</p>
+                <p class="source"><a href="http://od.ifi.uzh.ch/package/laufende-rechnung-und-investitionsrechnung-2010"><img src="img/ezurich.gif" alt="eZurich" />Laufende Rechnung 2010</a></p>
+                <p class="source"><a href="http://www.steueramt.zh.ch/internet/finanzdirektion/ksta/de/steuerberechnung/stebe_natuerliche_personen/stst_normal.html"><img src="img/zurich.gif" alt="Stadtkanton Steueramt" />Gemeindesteuern</a></p>
+
+                <p>Source Code: <a href="https://github.com/Seldaek/wheredidmytaxesgo">GitHub</a></p>
             </footer>
         </div>
 
+        <script src="js/libs/d3-2.3.2.js"></script>
         <script src="js/libs/jquery-1.6.2.min.js"></script>
         <script src="js/libs/jquery-ui-1.8.16.custom.min.js"></script>
         <script src="js/main.js"></script>
