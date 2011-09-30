@@ -1,15 +1,15 @@
 "use strict";
 
-var taxes;
+var taxData;
 
 function getTaxes(income, married) {
     var incomeType;
 
-    if (taxes === undefined) {
+    if (taxData === undefined) {
         $.ajax('taxes.json', {
             async: false,
             success: function (data) {
-                taxes = data;
+                taxData = data;
             }
         });
     }
@@ -19,21 +19,26 @@ function getTaxes(income, married) {
         throw new Error('Invalid input, must be within the 10K-249K range');
     }
 
-    return Math.round(taxes[incomeType.toString()][married ? 1 : 0] / (incomeType*1000) * income);
+    return Math.round(taxData[incomeType.toString()][married ? 1 : 0] / (incomeType*1000) * income);
 }
 
-function update(income) {
-    $('#income').text('Income: ' + (income * 1000) + ' CHF');
-    $('#taxes').text('Taxes: ' + getTaxes(income * 1000) + ' CHF');
+function update() {
+    var income = $('#slider').slider('value') * 1000,
+        married = $('#married').is('.selected');
+    $('#income').text((income) + ' CHF');
+    $('#taxes').text(getTaxes(income, married) + ' CHF');
 }
 
-$(function () {
-    $('#slider').slider({
-        min: 10,
-        max: 249,
-        value: 50,
-    }).bind('slidechange slide', function (e) {
-            update($(this).slider('value'));
-    });
+$('#slider').slider({
+    min: 10,
+    max: 249,
+    value: 50,
+}).bind('slidechange slide', function (e) {
+    update();
+}).trigger('slidechange');
+
+$('#married, #single').click(function (e) {
+    $('#married, #single').removeClass('selected');
+    $(this).addClass('selected');
+    update();
 });
-
