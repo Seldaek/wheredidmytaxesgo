@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <title>d3.js ~ Calendar View</title>
+    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js?2.3.2"></script>
+    <style>
+    .chart div {
+      font: 10px sans-serif;
+      background-color: steelblue;
+      text-align: left;
+      padding: 3px;
+      margin: 2px;
+      color: white;
+    }
+    </style>
+  </head>
+  <body>
+    <script>
+/*
+    data = {
+      "BEHÖRDEN UND ALLGEMEINE VERWALTUNG": 798532,
+      "RECHTSCHUTZ UND SICHERHEIT": 610601,
+      "BILDUNG": 897564,
+      "KULTUR UND FREIZEIT": 353979,
+      "GESUNDHEIT": 882751,
+      "SOZIALE WOHLFAHRT": 1358892,
+      "VERKEHR": 997827,
+      "UMWELT UND RAUMORDNUNG": 477265,
+      "VOLKSWIRTSCHAFT": 845404,
+      "FINANZEN UND STEUERN": 548101
+    };
+*/
+
+data = [
+ { key: "BEHÖRDEN UND ALLGEMEINE VERWALTUNG", value: 798532 },
+ { key: "RECHTSCHUTZ UND SICHERHEIT", value: 610601 },
+ { key: "BILDUNG", value: 897564 },
+ { key: "KULTUR UND FREIZEIT", value: 353979 },
+ { key: "GESUNDHEIT", value: 882751 },
+ { key: "SOZIALE WOHLFAHRT", value: 1358892 },
+ { key: "VERKEHR", value: 997827 },
+ { key: "UMWELT UND RAUMORDNUNG", value: 477265 },
+ { key: "VOLKSWIRTSCHAFT", value: 845404 },
+ { key: "FINANZEN UND STEUERN", value: 548101 }
+];
+
+    
+    var chart = d3.select("body").append("div").attr("class", "chart");
+
+    chart.selectAll("div")
+    .data(data).enter()
+    .append("div")
+    .style("width", function(d) { return d.value / 2000 + "px"; })
+    .text(function(d) { return d.key; });
+
+    console.info( chart );
+
+    </script>
+  </body>
+</html>
