@@ -35,6 +35,7 @@ function getTaxes(income, married) {
     if (taxData === undefined) {
         $.ajax('taxes.json', {
             async: false,
+            dataType: 'json',
             success: function (data) {
                 taxData = data;
             }
