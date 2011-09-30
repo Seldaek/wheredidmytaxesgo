@@ -1,0 +1,32 @@
+<html>
+<head>
+    <title></title>
+    <script src="jquery-1.6.4.min.js"></script>
+    <script>
+        var taxes;
+
+        function getTaxes(income) {
+            if (taxes === undefined) {
+                $.ajax('taxes.json', {
+                    async: false,
+                    success: function (data) {
+                        taxes = data;
+                    }
+                });
+            }
+
+            incomeType = Math.round(income / 1000);
+            if (incomeType < 10 || incomeType > 249) {
+                throw new Error('Invalid input, must be within the 10K-249K range');
+            }
+
+            return taxes[incomeType.toString()] / (incomeType*1000) * income;
+        }
+
+        alert(getTaxes(83243));
+    </script>
+</head>
+<body>
+
+</body>
+</html>
