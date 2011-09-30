@@ -5,11 +5,11 @@
       "children": [
         {
           "name": "Legislative und Exekutive",
-          "size": "18036"
+          "size": 18036
         },
         {
           "name": "Gemeindeverwaltung",
-          "size": "566328"
+          "size": 566328
         },
         {
           "name": "Leistungen für Pensionierte",
@@ -17,7 +17,7 @@
         },
         {
           "name": "Verwaltungsliegenschaften",
-          "size": "214168"
+          "size": 214168
         }
       ],
       "name": "BEHÖRDEN UND ALLGEMEINE VERWALTUNG"
@@ -26,19 +26,19 @@
       "children": [
         {
           "name": "Rechtspflege",
-          "size": "171484"
+          "size": 171484
         },
         {
           "name": "Polizei",
-          "size": "349426"
+          "size": 349426
         },
         {
           "name": "Rechtssprechung",
-          "size": "23375"
+          "size": 23375
         },
         {
           "name": "Feuerwehr und Feuerpolizei",
-          "size": "58756"
+          "size": 58756
         },
         {
           "name": "Militär",
@@ -46,7 +46,7 @@
         },
         {
           "name": "Zivilschutz",
-          "size": "7560"
+          "size": 7560
         }
       ],
       "name": "RECHTSCHUTZ UND SICHERHEIT"
@@ -55,23 +55,23 @@
       "children": [
         {
           "name": "Kindergarten",
-          "size": "43544"
+          "size": 43544
         },
         {
           "name": "Volksschule",
-          "size": "673334"
+          "size": 673334
         },
         {
           "name": "Sonderschulung",
-          "size": "119727"
+          "size": 119727
         },
         {
           "name": "Berufsbildung",
-          "size": "51250"
+          "size": 51250
         },
         {
           "name": "Bildungswesen Übriges",
-          "size": "9709"
+          "size": 9709
         }
       ],
       "name": "BILDUNG"
@@ -80,11 +80,11 @@
       "children": [
         {
           "name": "Kulturförderung",
-          "size": "159147"
+          "size": 159147
         },
         {
           "name": "Denkmalpflege, Heimatschutz",
-          "size": "14365"
+          "size": 14365
         },
         {
           "name": "Massenmedien, Antennen- und Kabelanlagen",
@@ -92,15 +92,15 @@
         },
         {
           "name": "Parkanlagen, Wanderwege",
-          "size": "40544"
+          "size": 40544
         },
         {
           "name": "Sport",
-          "size": "128174"
+          "size": 128174
         },
         {
           "name": "Übrige Freizeitgestaltung",
-          "size": "11749"
+          "size": 11749
         },
         {
           "name": "Kirche",
@@ -113,31 +113,31 @@
       "children": [
         {
           "name": "Spitäler",
-          "size": "519586"
+          "size": 519586
         },
         {
           "name": "Kranken- und Pflegeheime",
-          "size": "221568"
+          "size": 221568
         },
         {
           "name": "Ambulante Krankenpflege",
-          "size": "36452"
+          "size": 36452
         },
         {
           "name": "Krankheitsbekämpfung",
-          "size": "4818"
+          "size": 4818
         },
         {
           "name": "Schulgesundheitsdienst",
-          "size": "15986"
+          "size": 15986
         },
         {
           "name": "Lebensmittelkontrolle",
-          "size": "2069"
+          "size": 2069
         },
         {
           "name": "Gesundheitswesen Übriges",
-          "size": "82272"
+          "size": 82272
         }
       ],
       "name": "GESUNDHEIT"
@@ -146,39 +146,39 @@
       "children": [
         {
           "name": "Sozialversicherung Allgemeines",
-          "size": "278"
+          "size": 278
         },
         {
           "name": "Krankenversicherung",
-          "size": "154245"
+          "size": 154245
         },
         {
           "name": "Zusatzleistungen zur AHV/IV",
-          "size": "393014"
+          "size": 393014
         },
         {
           "name": "Jugendschutz",
-          "size": "78247"
+          "size": 78247
         },
         {
           "name": "Invalidität",
-          "size": "3459"
+          "size": 3459
         },
         {
           "name": "Sozialer Wohnungsbau",
-          "size": "8215"
+          "size": 8215
         },
         {
           "name": "Altersheime",
-          "size": "154099"
+          "size": 154099
         },
         {
           "name": "Fürsorge",
-          "size": "564076"
+          "size": 564076
         },
         {
           "name": "Hilfsaktionen",
-          "size": "3259"
+          "size": 3259
         }
       ],
       "name": "SOZIALE WOHLFAHRT"
@@ -187,11 +187,11 @@
       "children": [
         {
           "name": "Staatsstrassen",
-          "size": "65287"
+          "size": 65287
         },
         {
           "name": "Gemeindestrassen",
-          "size": "268682"
+          "size": 268682
         },
         {
           "name": "Privatstrassen",
@@ -203,11 +203,11 @@
         },
         {
           "name": "Regionalverkehr",
-          "size": "663617"
+          "size": 663617
         },
         {
           "name": "Schiffahrt",
-          "size": "241"
+          "size": 241
         },
         {
           "name": "Luftfahrt",
@@ -220,39 +220,39 @@
       "children": [
         {
           "name": "Wasserversorgung",
-          "size": "119086"
+          "size": 119086
         },
         {
           "name": "Abwasserbeseitigung, Kläranlagen",
-          "size": "137359"
+          "size": 137359
         },
         {
           "name": "Abfallbeseitigung, Kehrichtverbrennnungsanlagen",
-          "size": "154133"
+          "size": 154133
         },
         {
           "name": "Schlachthöfe",
-          "size": "3758"
+          "size": 3758
         },
         {
           "name": "Friedhof und Bestattung",
-          "size": "37267"
+          "size": 37267
         },
         {
           "name": "Gewässerunterhalt und -verbauung",
-          "size": "7"
+          "size": 7
         },
         {
           "name": "Naturschutz",
-          "size": "8006"
+          "size": 8006
         },
         {
           "name": "Übriger Umweltschutz",
-          "size": "16984"
+          "size": 16984
         },
         {
           "name": "Raumordnung",
-          "size": "665"
+          "size": 665
         }
       ],
       "name": "UMWELT UND RAUMORDNUNG"
@@ -261,11 +261,11 @@
       "children": [
         {
           "name": "Landwirtschaft",
-          "size": "1426"
+          "size": 1426
         },
         {
           "name": "Forstwirtschaft",
-          "size": "4645"
+          "size": 4645
         },
         {
           "name": "Jagd und Fischerei",
@@ -273,19 +273,19 @@
         },
         {
           "name": "Tourismus, kommunale Werbung",
-          "size": "2405"
+          "size": 2405
         },
         {
           "name": "Beiträge Industrie, Gewerbe, Handel",
-          "size": "6835"
+          "size": 6835
         },
         {
           "name": "Energieversorgung",
-          "size": "818684"
+          "size": 818684
         },
         {
           "name": "Sonstige Gemeindebetriebe",
-          "size": "11409"
+          "size": 11409
         }
       ],
       "name": "VOLKSWIRTSCHAFT"
@@ -294,7 +294,7 @@
       "children": [
         {
           "name": "Gemeindesteuern",
-          "size": "42678"
+          "size": 42678
         },
         {
           "name": "Finanzausgleich",
@@ -306,11 +306,11 @@
         },
         {
           "name": "Vermögens- und Schuldenverwaltung",
-          "size": "459496"
+          "size": 459496
         },
         {
           "name": "Abschreibungen, Neutrale Aufwendungen und Erträge, Abschluss",
-          "size": "45927"
+          "size": 45927
         }
       ],
       "name": "FINANZEN UND STEUERN"

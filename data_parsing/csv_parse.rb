@@ -18,7 +18,7 @@ CSV.foreach('zuerich_laufende_rechnung_clean.csv', { :encoding => 'UTF-8', :head
   
   data = {
     'name' => line['Aufgaben'],
-    'size' => size
+    'size' => size.to_i
   }
 
   rows[ line['Kategorie'] ]['name'] = line['Kategorie']
