@@ -9,7 +9,7 @@ rows = Hash.new do |h,k|
   }
 end
 
-CSV.foreach('zuerich_laufende_rechnung_clean.csv', { :encoding => 'UTF-8', :headers => true} ) do |line|
+CSV.foreach('2012-zurich_utf.csv', { :encoding => 'UTF-8', :headers => true} ) do |line|
   size = line['Aufwand total']
   
   if size.nil? then
