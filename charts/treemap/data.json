@@ -1,0 +1,319 @@
+{
+  "name": "ZH",
+  "children": [
+    {
+      "children": [
+        {
+          "name": "Legislative und Exekutive",
+          "size": "18036"
+        },
+        {
+          "name": "Gemeindeverwaltung",
+          "size": "566328"
+        },
+        {
+          "name": "Leistungen für Pensionierte",
+          "size": 0
+        },
+        {
+          "name": "Verwaltungsliegenschaften",
+          "size": "214168"
+        }
+      ],
+      "name": "BEHÖRDEN UND ALLGEMEINE VERWALTUNG"
+    },
+    {
+      "children": [
+        {
+          "name": "Rechtspflege",
+          "size": "171484"
+        },
+        {
+          "name": "Polizei",
+          "size": "349426"
+        },
+        {
+          "name": "Rechtssprechung",
+          "size": "23375"
+        },
+        {
+          "name": "Feuerwehr und Feuerpolizei",
+          "size": "58756"
+        },
+        {
+          "name": "Militär",
+          "size": 0
+        },
+        {
+          "name": "Zivilschutz",
+          "size": "7560"
+        }
+      ],
+      "name": "RECHTSCHUTZ UND SICHERHEIT"
+    },
+    {
+      "children": [
+        {
+          "name": "Kindergarten",
+          "size": "43544"
+        },
+        {
+          "name": "Volksschule",
+          "size": "673334"
+        },
+        {
+          "name": "Sonderschulung",
+          "size": "119727"
+        },
+        {
+          "name": "Berufsbildung",
+          "size": "51250"
+        },
+        {
+          "name": "Bildungswesen Übriges",
+          "size": "9709"
+        }
+      ],
+      "name": "BILDUNG"
+    },
+    {
+      "children": [
+        {
+          "name": "Kulturförderung",
+          "size": "159147"
+        },
+        {
+          "name": "Denkmalpflege, Heimatschutz",
+          "size": "14365"
+        },
+        {
+          "name": "Massenmedien, Antennen- und Kabelanlagen",
+          "size": 0
+        },
+        {
+          "name": "Parkanlagen, Wanderwege",
+          "size": "40544"
+        },
+        {
+          "name": "Sport",
+          "size": "128174"
+        },
+        {
+          "name": "Übrige Freizeitgestaltung",
+          "size": "11749"
+        },
+        {
+          "name": "Kirche",
+          "size": 0
+        }
+      ],
+      "name": "KULTUR UND FREIZEIT"
+    },
+    {
+      "children": [
+        {
+          "name": "Spitäler",
+          "size": "519586"
+        },
+        {
+          "name": "Kranken- und Pflegeheime",
+          "size": "221568"
+        },
+        {
+          "name": "Ambulante Krankenpflege",
+          "size": "36452"
+        },
+        {
+          "name": "Krankheitsbekämpfung",
+          "size": "4818"
+        },
+        {
+          "name": "Schulgesundheitsdienst",
+          "size": "15986"
+        },
+        {
+          "name": "Lebensmittelkontrolle",
+          "size": "2069"
+        },
+        {
+          "name": "Gesundheitswesen Übriges",
+          "size": "82272"
+        }
+      ],
+      "name": "GESUNDHEIT"
+    },
+    {
+      "children": [
+        {
+          "name": "Sozialversicherung Allgemeines",
+          "size": "278"
+        },
+        {
+          "name": "Krankenversicherung",
+          "size": "154245"
+        },
+        {
+          "name": "Zusatzleistungen zur AHV/IV",
+          "size": "393014"
+        },
+        {
+          "name": "Jugendschutz",
+          "size": "78247"
+        },
+        {
+          "name": "Invalidität",
+          "size": "3459"
+        },
+        {
+          "name": "Sozialer Wohnungsbau",
+          "size": "8215"
+        },
+        {
+          "name": "Altersheime",
+          "size": "154099"
+        },
+        {
+          "name": "Fürsorge",
+          "size": "564076"
+        },
+        {
+          "name": "Hilfsaktionen",
+          "size": "3259"
+        }
+      ],
+      "name": "SOZIALE WOHLFAHRT"
+    },
+    {
+      "children": [
+        {
+          "name": "Staatsstrassen",
+          "size": "65287"
+        },
+        {
+          "name": "Gemeindestrassen",
+          "size": "268682"
+        },
+        {
+          "name": "Privatstrassen",
+          "size": 0
+        },
+        {
+          "name": "Bundesbahnen",
+          "size": 0
+        },
+        {
+          "name": "Regionalverkehr",
+          "size": "663617"
+        },
+        {
+          "name": "Schiffahrt",
+          "size": "241"
+        },
+        {
+          "name": "Luftfahrt",
+          "size": 0
+        }
+      ],
+      "name": "VERKEHR"
+    },
+    {
+      "children": [
+        {
+          "name": "Wasserversorgung",
+          "size": "119086"
+        },
+        {
+          "name": "Abwasserbeseitigung, Kläranlagen",
+          "size": "137359"
+        },
+        {
+          "name": "Abfallbeseitigung, Kehrichtverbrennnungsanlagen",
+          "size": "154133"
+        },
+        {
+          "name": "Schlachthöfe",
+          "size": "3758"
+        },
+        {
+          "name": "Friedhof und Bestattung",
+          "size": "37267"
+        },
+        {
+          "name": "Gewässerunterhalt und -verbauung",
+          "size": "7"
+        },
+        {
+          "name": "Naturschutz",
+          "size": "8006"
+        },
+        {
+          "name": "Übriger Umweltschutz",
+          "size": "16984"
+        },
+        {
+          "name": "Raumordnung",
+          "size": "665"
+        }
+      ],
+      "name": "UMWELT UND RAUMORDNUNG"
+    },
+    {
+      "children": [
+        {
+          "name": "Landwirtschaft",
+          "size": "1426"
+        },
+        {
+          "name": "Forstwirtschaft",
+          "size": "4645"
+        },
+        {
+          "name": "Jagd und Fischerei",
+          "size": 0
+        },
+        {
+          "name": "Tourismus, kommunale Werbung",
+          "size": "2405"
+        },
+        {
+          "name": "Beiträge Industrie, Gewerbe, Handel",
+          "size": "6835"
+        },
+        {
+          "name": "Energieversorgung",
+          "size": "818684"
+        },
+        {
+          "name": "Sonstige Gemeindebetriebe",
+          "size": "11409"
+        }
+      ],
+      "name": "VOLKSWIRTSCHAFT"
+    },
+    {
+      "children": [
+        {
+          "name": "Gemeindesteuern",
+          "size": "42678"
+        },
+        {
+          "name": "Finanzausgleich",
+          "size": 0
+        },
+        {
+          "name": "Einnahmeanteile",
+          "size": 0
+        },
+        {
+          "name": "Vermögens- und Schuldenverwaltung",
+          "size": "459496"
+        },
+        {
+          "name": "Abschreibungen, Neutrale Aufwendungen und Erträge, Abschluss",
+          "size": "45927"
+        }
+      ],
+      "name": "FINANZEN UND STEUERN"
+    }
+  ]
+}

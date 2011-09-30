@@ -6,7 +6,7 @@
     <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js?2.3.2"></script>
     <style>
     .chart div {
-      font: 10px sans-serif;
+      font: 20px sans-serif;
       background-color: steelblue;
       text-align: left;
       padding: 3px;
@@ -51,7 +51,7 @@ data = [
     chart.selectAll("div")
     .data(data).enter()
     .append("div")
-    .style("width", function(d) { return d.value / 2000 + "px"; })
+    .style("width", function(d) { return d.value / 1000 + "px"; })
     .text(function(d) { return d.key; });
 
     console.info( chart );

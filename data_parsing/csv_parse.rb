@@ -4,16 +4,35 @@ require 'csv'
 require 'json'
 
 rows = Hash.new do |h,k|
-  h[k] = []
+  h[k] = {
+    'children' => []
+  }
 end
 
 CSV.foreach('zuerich_laufende_rechnung_clean.csv', { :encoding => 'UTF-8', :headers => true} ) do |line|
-  data = {}
-  line.headers.each do |h|
-    data[ h ] = line[ h ]
+  size = line['Aufwand total']
+  
+  if size.nil? then
+    size = 0
   end
   
-  rows[ line['Kategorie'] ] << data
+  data = {
+    'name' => line['Aufgaben'],
+    'size' => size
+  }
+
+  rows[ line['Kategorie'] ]['name'] = line['Kategorie']
+  rows[ line['Kategorie'] ]['children'] << data
+  
 end
 
-puts JSON.pretty_generate( rows )
+final = {
+  'name' => 'ZH',
+  'children' => []
+}
+
+rows.each_pair do |key, value|
+  final['children'] << value
+end
+
+puts JSON.pretty_generate( final )
