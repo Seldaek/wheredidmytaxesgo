@@ -210,32 +210,74 @@ table { border-collapse: collapse; border-spacing: 0; }
 
 h1 {
   text-align: center;
-  font-size: 30px;
+  font-size: 50px;
+  margin: 10px;
+}
+
+#income {
+  font-weight: bold;
+}
+
+a, a:visited, a:hover {
+  color: #000;
 }
 
 button {
-  width: 200px;
-  height: 40px;
+  width: 140px;
+  height: 30px;
   font-size: 18px;
   display: block;
-  background: #eee;
+  background: #f8f8f8;
   color: #000;
-  border: 2px solid #ddd;
+  border: 1px solid #ddd;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
 }
 
 button.selected {
-  border-color: #fcffbb;
-  background: #fdffd5;
+  border-color: #fbcb09;
+  background: #fdf9e1;
 }
 
 .marital button {
   display: inline-block;
 }
 
+.chart p {
+  margin: 2px 0;
+}
 
+.bar-chart div {
+  background-color: #97dfe8;
+  text-align: left;
+  padding: 3px;
+  margin: 2px;
+  color: #000;
+  display: inline-block;
+}
+
+.bar-chart .label {
+  display: inline-block;
+  width: 80px;
+  text-align: right;
+  margin-right: 10px;
+}
+
+footer {
+  border-top: 1px solid #ddd;
+  margin-top: 50px;
+  padding-top: 30px;
+}
+
+footer .source {
+  margin: 0 30px 0 0;
+  display: inline-block;
+}
+
+footer .source img {
+  display: block;
+}
 
 
 /* =============================================================================
