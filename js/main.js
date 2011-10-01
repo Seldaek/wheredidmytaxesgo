@@ -1,6 +1,6 @@
 "use strict";
 
-var taxData,
+var taxDataIncome, taxDataCapital,
     total = 0,
     data = [
         { key: "BEHÖRDEN UND ALLGEMEINE VERWALTUNG", value: 798532 },
@@ -29,25 +29,61 @@ function initData() {
     }
 }
 
-function getTaxes(income, married) {
-    var incomeType;
-
-    if (taxData === undefined) {
-        $.ajax('taxes.json', {
+function getIncomeTaxes(income, married) {
+    if (taxDataIncome === undefined) {
+        $.ajax('taxrates_income.json', {
             async: false,
             dataType: 'json',
             success: function (data) {
-                taxData = data;
+                taxDataIncome = data;
             }
         });
     }
 
-    incomeType = Math.round(income / 1000);
-    if (incomeType < 10 || incomeType > 249) {
-        throw new Error('Invalid input, must be within the 10K-249K range');
+    var tax = 0;
+    var idx = married ? 2 : 1;
+
+    for(var i = 0 ; ; i++) {
+      var boundary = taxDataIncome[i][idx];
+      if (income < boundary || boundary == 0) {
+        tax += income * taxDataIncome[i][0];
+        break;
+      } else {
+        tax += boundary * taxDataIncome[i][0];
+        income -= boundary;
+      }
     }
 
-    return Math.round(taxData[incomeType.toString()][married ? 1 : 0] / (incomeType*1000) * income);
+    return tax;
+}
+
+function getCapitalTaxes(capital, married) {
+    if (taxDataCapital === undefined) {
+        $.ajax('taxrates_capital.json', {
+            async: false,
+            dataType: 'json',
+            success: function (data) {
+                taxDataCapital = data;
+            }
+        });
+    }
+
+    var tax = 0;
+    var idx = married ? 2 : 1;
+
+
+    for(var i = 0 ; ; i++) {
+      var boundary = taxDataCapital[i][idx];
+      if (capital < boundary || boundary == 0) {
+        tax += capital * taxDataCapital[i][0];
+        break;
+      } else {
+        tax += boundary * taxDataCapital[i][0];
+        capital -= boundary;
+      }
+    }
+
+    return tax;
 }
 
 function moneyFormat(value) {
@@ -61,8 +97,10 @@ function moneyFormat(value) {
 function update() {
     var i,
         income = $('#slider').slider('value') * 1000,
+        capital = $('#capital').val(),
         married = $('#married').is('.selected'),
-        taxes = getTaxes(income, married),
+        taxes = getIncomeTaxes(income, married)
+             +  getCapitalTaxes(capital, married),
         duration = taxes / 1000 / total * 86400 * 365;
 
     $('#income').text(moneyFormat(income) + ' CHF');
@@ -93,7 +131,7 @@ initData();
 
 $('#slider').slider({
     min: 10,
-    max: 249,
+    max: 1249,
     value: 50,
 }).bind('slidechange slide', function (e) {
     update();
