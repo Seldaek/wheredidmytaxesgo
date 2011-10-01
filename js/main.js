@@ -20,16 +20,6 @@ var max, scale;
 
 function initData() {
     var i;
-    data.sort(function (a, b) {
-        if (a.value == b.value) {
-            return 0;
-        }
-        return a.value > b.value ? -1 : 1;
-    });
-
-    for (i = 0; i < data.length; i++) {
-        total += data[i].value;
-    }
 
     scale = d3.scale.linear().range([ 0, 100 ] );
 
@@ -132,7 +122,7 @@ function update() {
     d3.select('.bar-chart')
     .selectAll("div.active")
     .each( function( d, i) {
-      $('#text' + i ).html( moneyFormat( d.size * taxes / total ) )
+      $('#text' + i ).html( moneyFormat( d.size * taxes / total ) + ' CHF' )
     });    
 }
 
@@ -162,7 +152,9 @@ function classes(root) {
 
   sections.sort( reverse_size_sort );
 
-  var max = sections[0].size;
+  max = sections[0].size;
+
+  total = d3.sum( sections.map( function(x) { return x.size; } ) );
 
   scale.domain( [0, max ] );
 
