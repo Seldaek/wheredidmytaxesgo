@@ -87,12 +87,9 @@ function getCapitalTaxes(capital, married) {
     return tax;
 }
 
-function moneyFormat(value) {
-    value = value.toString();
-    if (value > 1000) {
-        return Math.floor(value / 1000) + "'" + "000".substr((value % 1000).toString().length) + (value % 1000);
-    }
-    return value;
+function moneyFormat(n) {
+    var t = "'", i = parseInt(n = Math.abs(+n || 0).toFixed(0)) + "", j = (j = i.length) > 3 ? j % 3 : 0;
+   	return (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t);
 }
 
 function update() {
