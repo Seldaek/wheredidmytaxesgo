@@ -100,15 +100,10 @@ function update() {
         income = $('#slider').slider('value') * 1000,
         capital = $('#capital').val(),
         married = $('#married').is('.selected'),
-<<<<<<< HEAD
         taxes = getIncomeTaxes(income, married)
              +  getCapitalTaxes(capital, married),
-        duration = taxes / 1000 / total * 86400 * 365;
-=======
-        taxes = getTaxes(income, married),
         duration = taxes / 1000 / total * 86400 * 365,
         tr = $.tr.translator();
->>>>>>> Add translations, skip slider on mobile devices
 
     $('#income').text(moneyFormat(income) + ' CHF');
     $('#taxes').text(tr('taxes-report', {taxes: moneyFormat(taxes) + ' CHF', duration: Math.round(duration)}));
