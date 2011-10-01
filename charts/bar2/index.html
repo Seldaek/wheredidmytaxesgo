@@ -43,11 +43,13 @@
 
     var vis = d3.select("#chart");
 
+    var scale = d3.scale.linear().range([ 0, 800 ] );
+
     d3.json("2012.json", function(json) {
       var node = vis.selectAll("div")
           .data( bubble.nodes( classes(json) ).filter(function(d) { return !d.children; } ) )
           .enter().append("div")
-          .style("width", function(d) { return d.size / 1000 + 'px'; } )
+          .style("width", function(d) { return scale( d.size ) + 'px'; } )
           .style("height", '10px' )
           .attr('class', function(d) { return d.class; } )
           .attr('id', function(d) { return d.id; } )
@@ -57,9 +59,13 @@
 
     $('.section1').toggle();
 
+
     // Returns a flattened hierarchy containing all leaf nodes under the root.
     function classes(root) {
       var classes = [];
+      
+      var sections = [];
+      var subs = {};
 
       root.children.forEach( function( child, i ) {
         subclasses = [];
@@ -70,11 +76,24 @@
           sizes.push( grandchild['Aufwand total'] );
         })
 
-        classes.push( { name: child.name, class: 'head', id: 'section' + i, size: d3.sum( sizes ) } );
-
-        classes.push.apply(classes, subclasses);
+        sections.push( { name: child.name, class: 'head', id: 'section' + i, size: d3.sum( sizes ), key: i } );
+        
+        subs[ i ] = subclasses;
       });
 
+      sections.sort( function( a, b ) {
+        return a.size < b.size;
+      });
+
+      max = sections[0].size;
+      
+      scale.domain( [0, max ] );
+
+      sections.forEach( function( section ){
+        classes.push( section );
+        classes.push.apply( classes, subs[ section.key ] );
+      });
+      
       return {children: classes};
     }
     </script>
