@@ -230,6 +230,9 @@ function init() {
     initTranslations();
 
     $('#container').removeClass('hidden');
+
+    setTimeout(update, 100);
+    setTimeout(update, 1000);
 }
 
 init();

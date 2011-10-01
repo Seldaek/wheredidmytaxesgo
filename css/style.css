@@ -375,10 +375,15 @@ footer .source img {
   display: block;
 }
 
+.bar-chart {
+  padding-left: 65px;
+}
+
 .bar-chart div {
   text-align: right;
   color: #000;
   white-space: pre;
+  position: relative;
 }
 
 .bar-chart div.head {
@@ -400,6 +405,16 @@ footer .source img {
     display: none;
     background-color: #b7dfec;
     margin: 1px 0;
+}
+
+.bar-chart div span {
+  position: absolute;
+  left: -65px;
+  top: 11px;
+}
+
+.bar-chart .sub span {
+  top: 4px;
 }
 
 .bar-chart .sub .legend {
