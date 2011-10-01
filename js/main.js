@@ -133,8 +133,7 @@ function update() {
     .selectAll("div.active")
     .each( function( d, i) {
       $('#text' + i ).html( moneyFormat( d.size * taxes / total ) )
-    });
-    
+    });    
 }
 
 function reverse_size_sort( a, b ) {
