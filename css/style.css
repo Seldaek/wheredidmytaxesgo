@@ -360,6 +360,14 @@ button.selected {
   margin-right: 10px;
 }
 
+.social {
+  margin-top: 40px;
+}
+
+.twitter-share-button {
+  float: left;
+}
+
 footer {
   border-top: 1px solid #888;
   margin-top: 50px;
