@@ -3,6 +3,7 @@
 var translations = {
     de: {
         'Where Did My Taxes Go?': 'Was passiert mit meinen Steuern?',
+        'City of Zürich 2010': 'Stadt Zürich 2010',
         'Civil Status': 'Steuertarif',
         'Single': 'Grundtarif',
         'Married': 'Verheiratet',
