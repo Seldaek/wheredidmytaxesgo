@@ -67,14 +67,14 @@ function getIncomeTaxes(income, married) {
     var idx = married ? 2 : 1;
 
     for(var i = 0 ; ; i++) {
-      var boundary = taxDataIncome[i][idx];
-      if (income < boundary || boundary == 0) {
-        tax += income * taxDataIncome[i][0];
-        break;
-      } else {
-        tax += boundary * taxDataIncome[i][0];
-        income -= boundary;
-      }
+        var boundary = taxDataIncome[i][idx];
+        if (income < boundary || boundary == 0) {
+            tax += income * taxDataIncome[i][0];
+            break;
+        } else {
+            tax += boundary * taxDataIncome[i][0];
+            income -= boundary;
+        }
     }
 
     return tax;
@@ -94,16 +94,15 @@ function getCapitalTaxes(capital, married) {
     var tax = 0;
     var idx = married ? 2 : 1;
 
-
     for(var i = 0 ; ; i++) {
-      var boundary = taxDataCapital[i][idx];
-      if (capital < boundary || boundary == 0) {
-        tax += capital * taxDataCapital[i][0];
-        break;
-      } else {
-        tax += boundary * taxDataCapital[i][0];
-        capital -= boundary;
-      }
+        var boundary = taxDataCapital[i][idx];
+        if (capital < boundary || boundary == 0) {
+            tax += capital * taxDataCapital[i][0];
+            break;
+        } else {
+            tax += boundary * taxDataCapital[i][0];
+            capital -= boundary;
+        }
     }
 
     return tax;
@@ -117,15 +116,15 @@ function moneyFormat(n) {
 function update() {
     var i,
         income = $('#slider').slider('value') * 1000,
-        capital = $('#capital').val(),
+        capital = parseInt($('#capital').val()) || 0,
         married = $('#married').is('.selected'),
         taxes = getIncomeTaxes(income, married)
-             +  getCapitalTaxes(capital, married),
+              + getCapitalTaxes(capital, married),
         duration = taxes / 1000 / total * 86400 * 365,
         tr = $.tr.translator();
 
     $('#income').text(moneyFormat(income) + ' CHF');
-    $('#taxes').text(moneyFormat(taxes));
+    $('#taxes').text(moneyFormat(Math.round(taxes)));
     $('#time').text(Math.round(duration));
 
 }
@@ -192,7 +191,9 @@ function init() {
     // load dicts
     $.tr.dictionary(translations);
     // set default language
-    $.tr.language('de');
+    $.tr.language('de', true);
+
+    $('.lang a[data-lang="'+$.tr.language()+'"]').addClass('active');
 
     initData();
 
@@ -201,7 +202,14 @@ function init() {
         $.tr.language($(this).data('lang'));
         $(this).addClass('active');
         initTranslations();
-    })
+    });
+
+    $('#capital').bind('change keyup', function (e) {
+        if (isNaN(parseInt($(this).val())) && $(this).val()) {
+            $(this).val('0');
+        }
+        update();
+    });
 
     if (!mobileDevice) {
         $('#slider').replaceWith('<div id="slider" />');
