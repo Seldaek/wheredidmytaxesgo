@@ -380,7 +380,6 @@ footer .source img {
 }
 
 .bar-chart div {
-  text-align: right;
   color: #000;
   white-space: pre;
   position: relative;
@@ -391,9 +390,9 @@ footer .source img {
 }
 
 .bar-chart .head {
-    font: 12px sans-serif;
-    background-color: #97dfe8;
-    margin: 5px 0px 0px 0px;
+  font: 12px sans-serif;
+  background-color: #97dfe8;
+  margin: 5px 0px 0px 0px;
 }
 
 .bar-chart .head .legend {
@@ -401,10 +400,10 @@ footer .source img {
 }
 
 .bar-chart .sub {
-    font: 10px sans-serif;
-    display: none;
-    background-color: #b7dfec;
-    margin: 1px 0;
+  font: 10px sans-serif;
+  display: none;
+  background-color: #b7dfec;
+  margin: 1px 0;
 }
 
 .bar-chart div span {
