@@ -40,11 +40,13 @@ function initData() {
     d3.json("data_parsing/2012.json", function(json) {
       var node = chart.selectAll("div")
           .data( bubble.nodes( classes(json) ).filter(function(d) { return !d.children; } ) )
-          .enter().append("div")
+          .enter()
+          .append("div")
           .style("width", function(d) { return scale( d.size ) + '%'; } )
-          .attr('class', function(d) { return d.class; } )
+          .attr('class', function(d) { return 'active ' + d.class; } )
           .attr('id', function(d) { return d.id; } )
           .on('click', function(d, i) { $( '.' + d.id ).toggle() } )
+          .html( function(d, i){ return '<span id="text' + i + '"/>'; } )
           .append("div")
           .attr('class', 'legend')
           .text(function(d) { return d.name; });
@@ -128,6 +130,13 @@ function update() {
     $('#taxes').text(moneyFormat(taxes));
     $('#time').text(Math.round(duration));
 
+    d3.select('.bar-chart')
+    .selectAll("div.active")
+    .each( function( d, i) {
+      console.info( '.text' + i  );
+      $('#text' + i ).html( d.size )
+      });
+    
 }
 
 function reverse_size_sort( a, b ) {
