@@ -14,13 +14,13 @@
     </head>
     <body>
         <noscript>You need to enable JavaScript to use this website.</noscript>
-        <h1 class="t">Where Did My Taxes Go?</h1>
         <div id="container" class="hidden">
             <header>
                 <div class="lang">
-                    <a data-lang="de">DE</a>
-                    <a data-lang="en">EN</a>
+                    <a data-lang="de">Deutsch</a> |
+                    <a data-lang="en">English</a>
                 </div>
+                <h1 class="t">Where Did My Taxes Go?</h1>
             </header>
 
             <div id="main" role="main">
@@ -34,12 +34,12 @@
                 <div class="block income">
                     <p>
                         <span class="t block-head">Income 2010</span>
-                        <span id="income"></span>
-                        <input id="slider" type="range" min="10" max="250" />
+                        <input id="slider" type="number" min="10000" max="300000" step="1000" value="50000" />
                     </p>
                     <p class="capital">
                         <span class="t block-head">Assets</span>
                         <input id="capital" type="text" />
+                        CHF
                     </p>
                 </div>
 
@@ -63,7 +63,7 @@
 
             <footer>
                 <p class="t">What is this?<p>
-                <p class="t">This was done during the <a href="http://make.opendata.ch/">MakeOpenData</a> camp 2011 using <a href="http://mbostock.github.com/d3/">D3.js</a> and the brainpower of <a href="http://local.ch">Tristan</a>, <a href="http://en.wikipedia.org/wiki/Bernd_Fix">Bernd</a>, <a href="http://kpi.at/">Stephan</a>, <a href="http://seld.be">Jordi</a> and Daniel.</p>
+                <p class="t">This was done during the <a href="http://make.opendata.ch/">MakeOpenData</a> Camp 2011. Team: <a href="http://local.ch">Tristan</a>, <a href="http://en.wikipedia.org/wiki/Bernd_Fix">Bernd</a>, <a href="http://www.im.ethz.ch/people/karpischek">Stephan</a>, <a href="http://seld.be">Jordi</a> and Daniel.</p>
                 <p class="t">Data Sources:</p>
                 <p class="source"><a href="http://od.ifi.uzh.ch/package/laufende-rechnung-und-investitionsrechnung-2010"><img src="img/ezurich.gif" alt="eZurich" />Laufende Rechnung 2010</a></p>
                 <p class="source"><a href="http://www.steueramt.zh.ch/internet/finanzdirektion/ksta/de/steuerberechnung/stebe_natuerliche_personen/stst_normal.html"><img src="img/zurich.gif" alt="Stadtkanton Steueramt" />Gemeindesteuern</a></p>

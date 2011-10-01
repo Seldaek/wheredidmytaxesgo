@@ -15,7 +15,7 @@ var taxDataIncome, taxDataCapital,
         { key: "VOLKSWIRTSCHAFT", value: 845404 },
         { key: "FINANZEN UND STEUERN", value: 548101 }
     ];
-    
+
 var max, scale;
 
 function initData() {
@@ -30,9 +30,9 @@ function initData() {
     for (i = 0; i < data.length; i++) {
         total += data[i].value;
     }
-    
+
     scale = d3.scale.linear().range([ 0, 100 ] );
-    
+
     var bubble = d3.layout.pack();
 
     var chart = d3.select(".chart").append("div").attr("class", "bar-chart");
@@ -51,7 +51,7 @@ function initData() {
           .attr('class', 'legend')
           .text(function(d) { return d.name; });
     });
-    
+
 }
 
 function getIncomeTaxes(income, married) {
@@ -69,14 +69,14 @@ function getIncomeTaxes(income, married) {
     var idx = married ? 2 : 1;
 
     for(var i = 0 ; ; i++) {
-      var boundary = taxDataIncome[i][idx];
-      if (income < boundary || boundary == 0) {
-        tax += income * taxDataIncome[i][0];
-        break;
-      } else {
-        tax += boundary * taxDataIncome[i][0];
-        income -= boundary;
-      }
+        var boundary = taxDataIncome[i][idx];
+        if (income < boundary || boundary == 0) {
+            tax += income * taxDataIncome[i][0];
+            break;
+        } else {
+            tax += boundary * taxDataIncome[i][0];
+            income -= boundary;
+        }
     }
 
     return tax;
@@ -96,16 +96,15 @@ function getCapitalTaxes(capital, married) {
     var tax = 0;
     var idx = married ? 2 : 1;
 
-
     for(var i = 0 ; ; i++) {
-      var boundary = taxDataCapital[i][idx];
-      if (capital < boundary || boundary == 0) {
-        tax += capital * taxDataCapital[i][0];
-        break;
-      } else {
-        tax += boundary * taxDataCapital[i][0];
-        capital -= boundary;
-      }
+        var boundary = taxDataCapital[i][idx];
+        if (capital < boundary || boundary == 0) {
+            tax += capital * taxDataCapital[i][0];
+            break;
+        } else {
+            tax += boundary * taxDataCapital[i][0];
+            capital -= boundary;
+        }
     }
 
     return tax;
@@ -118,16 +117,16 @@ function moneyFormat(n) {
 
 function update() {
     var i,
-        income = $('#slider').slider('value') * 1000,
-        capital = $('#capital').val(),
+        income = mobileDevice ? (parseInt($('#slider').val()) || 0) : $('#slider').slider('value') * 1000,
+        capital = parseInt($('#capital').val()) || 0,
         married = $('#married').is('.selected'),
         taxes = getIncomeTaxes(income, married)
-             +  getCapitalTaxes(capital, married),
+              + getCapitalTaxes(capital, married),
         duration = taxes / 1000 / total * 86400 * 365,
         tr = $.tr.translator();
 
     $('#income').text(moneyFormat(income) + ' CHF');
-    $('#taxes').text(moneyFormat(taxes));
+    $('#taxes').text(moneyFormat(Math.round(taxes)));
     $('#time').text(Math.round(duration));
 
     d3.select('.bar-chart')
@@ -145,35 +144,35 @@ function reverse_size_sort( a, b ) {
 
 function classes(root) {
   var classes = [];
-  
+
   var sections = [];
   var subs = {};
 
   root.children.forEach( function( child, i ) {
     var subclasses = [];
     var sizes = [];
-    
+
     child.children.forEach( function( grandchild ) {
       subclasses.push( { name: grandchild['Aufgaben'], class: 'sub section' + i, size: grandchild['Aufwand total']  } );
       sizes.push( grandchild['Aufwand total'] );
     })
 
     sections.push( { name: child.name, class: 'head', id: 'section' + i, size: d3.sum( sizes ), key: i } );
-    
+
     subs[ i ] = subclasses.sort( reverse_size_sort );
   });
 
   sections.sort( reverse_size_sort );
 
   var max = sections[0].size;
-  
+
   scale.domain( [0, max ] );
 
   sections.forEach( function( section ){
     classes.push( section );
     classes.push.apply( classes, subs[ section.key ] );
   });
-  
+
   return {children: classes};
 }
 
@@ -201,7 +200,9 @@ function init() {
     // load dicts
     $.tr.dictionary(translations);
     // set default language
-    $.tr.language('de');
+    $.tr.language('de', true);
+
+    $('.lang a[data-lang="'+$.tr.language()+'"]').addClass('active');
 
     initData();
 
@@ -210,17 +211,24 @@ function init() {
         $.tr.language($(this).data('lang'));
         $(this).addClass('active');
         initTranslations();
-    })
+    });
+
+    $('#capital').bind('change keyup', function (e) {
+        if (isNaN(parseInt($(this).val())) && $(this).val()) {
+            $(this).val('0');
+        }
+        update();
+    });
 
     if (!mobileDevice) {
-        $('#slider').replaceWith('<div id="slider" />');
+        $('#slider').replaceWith('<span id="income"><input type="text" value="50000" /> CHF</span><div id="slider" />');
         $('#slider').slider({
             min: 10,
             max: 300,
             value: 50,
-        }).bind('slidechange slide', function (e) {
-            update();
-        });
+        }).bind('slidechange slide', update);
+    } else {
+        $('#slider').bind('change keyup', update);
     }
 
     $('#married, #single').click(function (e) {
