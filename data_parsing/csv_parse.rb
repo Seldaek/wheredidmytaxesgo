@@ -10,17 +10,23 @@ rows = Hash.new do |h,k|
 end
 
 CSV.foreach('2012-zurich_utf.csv', { :encoding => 'UTF-8', :headers => true} ) do |line|
-  size = line['Aufwand total']
   
-  if size.nil? then
-    size = 0
+  data = {}
+  
+  line.headers.each do |header|
+    size = line[ header ]
+  
+    if size.nil? then
+      size = 0
+    end
+    
+    if size =~ /^[\-0-9\.]*$/ then
+      size = size.to_f
+    end
+
+    data[ header ] = size
   end
   
-  data = {
-    'name' => line['Aufgaben'],
-    'size' => size.to_i
-  }
-
   rows[ line['Kategorie'] ]['name'] = line['Kategorie']
   rows[ line['Kategorie'] ]['children'] << data
   

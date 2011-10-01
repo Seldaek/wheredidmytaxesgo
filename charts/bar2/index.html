@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <title>d3.js ~ Calendar View</title>
+    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js?2.3.2"></script>
+    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.layout.js?2.3.2"></script>
+    <style>
+    #chart div {
+      font: 10px sans-serif;
+      background-color: steelblue;
+      text-align: right;
+      padding: 3px;
+      margin: 1px;
+      color: white;
+    }
+    </style>
+  </head>
+  <body>
+    <div id="chart"></div>
+    <script>
+
+    var r = 960,
+        format = d3.format(",d");
+
+    var bubble = d3.layout.pack();
+
+    var vis = d3.select("#chart");
+
+    d3.json("2012.json", function(json) {
+      var node = vis.selectAll("div")
+          .data( bubble.nodes( classes(json) ).filter(function(d) { return !d.children; } ) )
+          .enter().append("div")
+          .style("width", function(d) { return d.size / 1000 + 'px'; } )
+          .style("height", '10px' )
+          .attr('class', function(d) { return d.class; } )
+          .attr('id', function(d) { return d.id; } )
+          .text(function(d) { return d.name; });
+    });
+
+    // Returns a flattened hierarchy containing all leaf nodes under the root.
+    function classes(root) {
+
+      console.info( root );
+
+      var classes = [];
+
+      root.children.forEach( function( child, i ) {
+        subclasses = [];
+        sizes = [];
+        
+        child.children.forEach( function( grandchild ) {
+          subclasses.push( { name: grandchild['Aufgaben'], class: 'sub section' + i, size: grandchild['Aufwand total']  } );
+          sizes.push( grandchild['Aufwand total'] );
+        })
+
+        classes.push( { name: child.name, class: 'head', id: 'section' + i, size: d3.sum( sizes ) } );
+
+        classes.push.apply(classes, subclasses);
+      });
+
+      console.info( classes );
+      return {children: classes};
+    }
+    </script>
+  </body>
+</html>
