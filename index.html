@@ -14,26 +14,53 @@
     </head>
     <body>
         <noscript>You need to enable JavaScript to use this website.</noscript>
-        <div id="container hidden">
+        <div id="container" class="hidden">
             <header>
                 <h1 class="t">Where Did My Taxes Go?</h1>
                 <div class="lang">
-                    <a data-lang="en">EN</a>
                     <a data-lang="de">DE</a>
+                    <a data-lang="en">EN</a>
                 </div>
             </header>
+
             <div id="main" role="main">
-                <p class="question t">You are:</p>
-                <div class="marital">
-                    <button id="single" class="selected t">Single</button>
-                    <button id="married" class="t">Married</button>
+                <div class="block marital">
+                    <p>
+                        <span class="block-head t">Civil Status</span>
+                        <button id="single" class="selected t">Single</button>
+                        <button id="married" class="t">Married</button>
+                    </p>
                 </div>
-                <p class="question"><span class="t">Your reported income for 2010 was: </span><span id="income"></span></p>
-                <input id="slider" type="range" min="10" max="250" />
-                <div><input id="capital" /></div>
-                <p id="taxes"></p>
+                <div class="block income">
+                    <p>
+                        <span class="t block-head">Income 2010</span>
+                        <span id="income"></span>
+                        <input id="slider" type="range" min="10" max="250" />
+                    </p>
+                    <p class="capital">
+                        <span class="t block-head">Assets</span>
+                        <input id="capital" type="text" />
+                    </p>
+                </div>
+
+                <div class="block report">
+                    <div class="taxes">
+                        <p class="t">Annual Taxes Paid</p>
+                        <p id="taxes"></p>
+                        <p>CHF</p>
+                    </div>
+                    <div class="time">
+                        <p class="t">This Money Lasted The City For</p>
+                        <div class="num">
+                            <p id="time"></p>
+                            <p>sec</p>
+                        </div>
+                        <div class="graph"></div>
+                    </div>
+                </div>
                 <div class="chart"></div>
             </div>
+
             <footer>
                 <p class="t">What is this?<p>
                 <p class="t">This was done during the <a href="http://make.opendata.ch/">MakeOpenData</a> camp 2011 using <a href="http://mbostock.github.com/d3/">D3.js</a> and the brainpower of <a href="http://local.ch">Tristan</a>, <a href="http://en.wikipedia.org/wiki/Bernd_Fix">Bernd</a>, <a href="http://kpi.at/">Stephan</a>, <a href="http://seld.be">Jordi</a> and Daniel.</p>

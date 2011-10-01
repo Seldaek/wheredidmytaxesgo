@@ -106,7 +106,8 @@ function update() {
         tr = $.tr.translator();
 
     $('#income').text(moneyFormat(income) + ' CHF');
-    $('#taxes').text(tr('taxes-report', {taxes: moneyFormat(taxes) + ' CHF', duration: Math.round(duration)}));
+    $('#taxes').text(moneyFormat(taxes));
+    $('#time').text(Math.round(duration));
 
     $('.chart').html('');
     var chart = d3.select(".chart").append("div").attr("class", "bar-chart");
@@ -121,7 +122,7 @@ function update() {
         })
         .append("div")
         .style("width", function (d) {
-            return d.value / 2000 + "px";
+            return d.value / 4000 + "px";
         })
         .text(function (d) {
             return d.key;
@@ -167,7 +168,7 @@ function init() {
         $('#slider').replaceWith('<div id="slider" />');
         $('#slider').slider({
             min: 10,
-            max: 249,
+            max: 300,
             value: 50,
         }).bind('slidechange slide', function (e) {
             update();

@@ -202,7 +202,8 @@ table { border-collapse: collapse; border-spacing: 0; }
    ========================================================================== */
 
 #container {
-  max-width: 1000px;
+  min-width: 480px;
+  max-width: 800px;
   margin: auto;
   font-family: Verdana;
   font-size: 14px;
@@ -214,16 +215,67 @@ h1 {
   margin: 10px;
 }
 
-#income {
-  font-weight: bold;
-}
-
 a, a:visited, a:hover {
   color: #000;
 }
 
+.block {
+  border: 1px solid #888;
+  padding: 20px;
+}
+
+.block.marital {
+  border-bottom: 0;
+}
+
+.block.income, .block.report {
+  box-shadow: 0 3px 2px #ddd;
+}
+
+.block .capital {
+  margin-top: 20px;
+}
+.block-head {
+  width: 130px;
+  display: inline-block;
+}
+
+.block.report {
+  margin-top: 40px;
+}
+
+.block p {
+  margin: 0;
+}
+#slider {
+  float: right;
+  width: 67%;
+}
+#income {
+  font-weight: bold;
+  display: inline-block;
+}
+#capital {
+  width: 100px;
+}
+
+.block .taxes, .block .time {
+  width: 49%;
+  display: inline-block;
+  text-align: center;
+  font-size: 20px;
+}
+
+#taxes, #time {
+  font-size: 60px;
+}
+
+.block .taxes {
+  border-right: 1px solid #ddd;
+}
+
 button {
-  width: 140px;
+  width: 130px;
   height: 30px;
   font-size: 18px;
   display: block;
@@ -242,8 +294,12 @@ button.selected {
 
 .marital button {
   display: inline-block;
+  margin-right: 10px;
 }
 
+.chart {
+  margin-top: 40px;
+}
 .chart p {
   margin: 2px 0;
 }
