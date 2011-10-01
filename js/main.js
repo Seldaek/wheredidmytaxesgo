@@ -132,9 +132,8 @@ function update() {
     d3.select('.bar-chart')
     .selectAll("div.active")
     .each( function( d, i) {
-      console.info( '.text' + i  );
-      $('#text' + i ).html( d.size )
-      });
+      $('#text' + i ).html( moneyFormat( d.size * taxes / total ) )
+    });
     
 }
 
