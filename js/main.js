@@ -27,7 +27,7 @@ function initData() {
 
     var chart = d3.select(".chart").append("div").attr("class", "bar-chart");
 
-    d3.json("data_parsing/2012.json", function(json) {
+    d3.json("data_parsing/2010.json", function(json) {
       var node = chart.selectAll("div")
           .data( bubble.nodes( classes(json) ).filter(function(d) { return !d.children; } ) )
           .enter()
