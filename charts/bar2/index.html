@@ -12,7 +12,11 @@
       text-align: right;
       padding: 3px;
       margin: 1px;
-      color: white;
+      color: #000;
+      white-space: pre;
+    }
+    .sub {
+        display: none;
     }
     </style>
   </head>
@@ -40,9 +44,6 @@
 
     // Returns a flattened hierarchy containing all leaf nodes under the root.
     function classes(root) {
-
-      console.info( root );
-
       var classes = [];
 
       root.children.forEach( function( child, i ) {
@@ -59,7 +60,6 @@
         classes.push.apply(classes, subclasses);
       });
 
-      console.info( classes );
       return {children: classes};
     }
     </script>
