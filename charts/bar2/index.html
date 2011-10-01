@@ -36,9 +36,6 @@
     <div id="chart"></div>
     <script>
 
-    var r = 960,
-        format = d3.format(",d");
-
     var bubble = d3.layout.pack();
 
     var vis = d3.select("#chart");
@@ -56,9 +53,6 @@
           .on('click', function(d, i) { $( '.' + d.id ).toggle() } )
           .text(function(d) { return d.name; });
     });
-
-    $('.section1').toggle();
-
 
     // Returns a flattened hierarchy containing all leaf nodes under the root.
     function classes(root) {

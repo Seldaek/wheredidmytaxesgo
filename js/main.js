@@ -15,6 +15,8 @@ var taxDataIncome, taxDataCapital,
         { key: "VOLKSWIRTSCHAFT", value: 845404 },
         { key: "FINANZEN UND STEUERN", value: 548101 }
     ];
+    
+var max, scale;
 
 function initData() {
     var i;
@@ -28,6 +30,26 @@ function initData() {
     for (i = 0; i < data.length; i++) {
         total += data[i].value;
     }
+    
+    scale = d3.scale.linear().range([ 0, 100 ] );
+    
+    var bubble = d3.layout.pack();
+
+    var chart = d3.select(".chart").append("div").attr("class", "bar-chart");
+
+    d3.json("data_parsing/2012.json", function(json) {
+      var node = chart.selectAll("div")
+          .data( bubble.nodes( classes(json) ).filter(function(d) { return !d.children; } ) )
+          .enter().append("div")
+          .style("width", function(d) { return scale( d.size ) + '%'; } )
+          .attr('class', function(d) { return d.class; } )
+          .attr('id', function(d) { return d.id; } )
+          .on('click', function(d, i) { $( '.' + d.id ).toggle() } )
+          .append("div")
+          .attr('class', 'legend')
+          .text(function(d) { return d.name; });
+    });
+    
 }
 
 function getIncomeTaxes(income, married) {
@@ -109,24 +131,42 @@ function update() {
     $('#taxes').text(moneyFormat(taxes));
     $('#time').text(Math.round(duration));
 
-    $('.chart').html('');
-    var chart = d3.select(".chart").append("div").attr("class", "bar-chart");
+}
 
-    chart.selectAll("div")
-        .data(data)
-        .enter()
-        .append("p")
-        .html(function (d) {
-            var spent = Math.round(taxes / total * d.value);
-            return '<span class="label">'+moneyFormat(spent)+' CHF</span>';
-        })
-        .append("div")
-        .style("width", function (d) {
-            return d.value / 4000 + "px";
-        })
-        .text(function (d) {
-            return d.key;
-        });
+function classes(root) {
+  var classes = [];
+  
+  var sections = [];
+  var subs = {};
+
+  root.children.forEach( function( child, i ) {
+    var subclasses = [];
+    var sizes = [];
+    
+    child.children.forEach( function( grandchild ) {
+      subclasses.push( { name: grandchild['Aufgaben'], class: 'sub section' + i, size: grandchild['Aufwand total']  } );
+      sizes.push( grandchild['Aufwand total'] );
+    })
+
+    sections.push( { name: child.name, class: 'head', id: 'section' + i, size: d3.sum( sizes ), key: i } );
+    
+    subs[ i ] = subclasses;
+  });
+
+  sections.sort( function( a, b ) {
+    return a.size < b.size;
+  });
+
+  var max = sections[0].size;
+  
+  scale.domain( [0, max ] );
+
+  sections.forEach( function( section ){
+    classes.push( section );
+    classes.push.apply( classes, subs[ section.key ] );
+  });
+  
+  return {children: classes};
 }
 
 function initTranslations() {
