@@ -130,6 +130,10 @@ function update() {
 
 }
 
+function reverse_size_sort( a, b ) {
+  return a.size < b.size;
+};
+
 function classes(root) {
   var classes = [];
   
@@ -147,12 +151,10 @@ function classes(root) {
 
     sections.push( { name: child.name, class: 'head', id: 'section' + i, size: d3.sum( sizes ), key: i } );
     
-    subs[ i ] = subclasses;
+    subs[ i ] = subclasses.sort( reverse_size_sort );
   });
 
-  sections.sort( function( a, b ) {
-    return a.size < b.size;
-  });
+  sections.sort( reverse_size_sort );
 
   var max = sections[0].size;
   
