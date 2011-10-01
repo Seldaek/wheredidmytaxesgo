@@ -33,9 +33,9 @@ function initData() {
           .enter()
           .append("div")
           .style("width", function(d) { return scale( d.size ) + '%'; } )
-          .attr('class', function(d) { return 'active ' + d.class; } )
-          .attr('id', function(d) { return d.id; } )
-          .on('click', function(d, i) { $( '.' + d.id ).toggle() } )
+          .attr('class', function(d) { return 'active ' + d['class']; } )
+          .attr('id', function(d) { if (typeof d['id'] !== 'undefined') return d['id']; } )
+          .on('click', function(d, i) { if (typeof d['id'] !== 'undefined') $( '.' + d['id'] ).toggle() } )
           .html( function(d, i){ return '<span id="text' + i + '"/>'; } )
           .append("div")
           .attr('class', 'legend')
@@ -141,11 +141,11 @@ function classes(root) {
     var sizes = [];
 
     child.children.forEach( function( grandchild ) {
-      subclasses.push( { name: grandchild['Aufgaben'], class: 'sub section' + i, size: grandchild['Aufwand total']  } );
+      subclasses.push( { name: grandchild['Aufgaben'], 'class': 'sub section' + i, size: grandchild['Aufwand total']  } );
       sizes.push( grandchild['Aufwand total'] );
     })
 
-    sections.push( { name: child.name, class: 'head', id: 'section' + i, size: d3.sum( sizes ), key: i } );
+    sections.push( { name: child.name, 'class': 'head', 'id': 'section' + i, size: d3.sum( sizes ), key: i } );
 
     subs[ i ] = subclasses.sort( reverse_size_sort );
   });
