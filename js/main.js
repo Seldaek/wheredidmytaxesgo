@@ -123,7 +123,7 @@ function update() {
     .selectAll("div.active")
     .each( function( d, i) {
       $('#text' + i ).html( moneyFormat( d.size * taxes / total ) + ' CHF' )
-    });    
+    });
 }
 
 function reverse_size_sort( a, b ) {
@@ -231,6 +231,7 @@ function init() {
 
     $('#container').removeClass('hidden');
 
+    $(update);
     setTimeout(update, 100);
     setTimeout(update, 1000);
 }
