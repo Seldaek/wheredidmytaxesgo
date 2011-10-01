@@ -1,6 +1,7 @@
 "use strict";
 
 var taxDataIncome, taxDataCapital,
+    mobileDevice = false,
     total = 0,
     data = [
         { key: "BEHÖRDEN UND ALLGEMEINE VERWALTUNG", value: 798532 },
@@ -99,13 +100,18 @@ function update() {
         income = $('#slider').slider('value') * 1000,
         capital = $('#capital').val(),
         married = $('#married').is('.selected'),
+<<<<<<< HEAD
         taxes = getIncomeTaxes(income, married)
              +  getCapitalTaxes(capital, married),
         duration = taxes / 1000 / total * 86400 * 365;
+=======
+        taxes = getTaxes(income, married),
+        duration = taxes / 1000 / total * 86400 * 365,
+        tr = $.tr.translator();
+>>>>>>> Add translations, skip slider on mobile devices
 
     $('#income').text(moneyFormat(income) + ' CHF');
-    $('#taxes').text(moneyFormat(taxes) + ' CHF');
-    $('#duration').text(Math.round(duration));
+    $('#taxes').text(tr('taxes-report', {taxes: moneyFormat(taxes) + ' CHF', duration: Math.round(duration)}));
 
     $('.chart').html('');
     var chart = d3.select(".chart").append("div").attr("class", "bar-chart");
@@ -127,18 +133,61 @@ function update() {
         });
 }
 
-initData();
+function initTranslations() {
+    var tr = $.tr.translator();
 
-$('#slider').slider({
-    min: 10,
-    max: 1249,
-    value: 50,
-}).bind('slidechange slide', function (e) {
-    update();
-}).trigger('slidechange');
+    $('.t').html(function () {
+        var src, content;
+        if (src = $(this).data('orig-trans')) {
+            return tr(src);
+        }
 
-$('#married, #single').click(function (e) {
-    $('#married, #single').removeClass('selected');
-    $(this).addClass('selected');
+        content = $(this).html();
+        $(this).data('orig-trans', content);
+        return tr(content);
+    });
+
     update();
-});
+}
+
+function init() {
+    var re = /Android|iOS|iPhone|iPad|iPod|WebOS/i;
+    mobileDevice = re.test(navigator.userAgent);
+
+    // load dicts
+    $.tr.dictionary(translations);
+    // set default language
+    $.tr.language('de');
+
+    initData();
+
+    $('.lang a').click(function (e) {
+        $('.lang a').removeClass('active');
+        $.tr.language($(this).data('lang'));
+        $(this).addClass('active');
+        initTranslations();
+    })
+
+    if (!mobileDevice) {
+        $('#slider').replaceWith('<div id="slider" />');
+        $('#slider').slider({
+            min: 10,
+            max: 249,
+            value: 50,
+        }).bind('slidechange slide', function (e) {
+            update();
+        });
+    }
+
+    $('#married, #single').click(function (e) {
+        $('#married, #single').removeClass('selected');
+        $(this).addClass('selected');
+        update();
+    });
+
+    initTranslations();
+
+    $('#container').removeClass('hidden');
+}
+
+init();

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-        <title>Where Did My Taxes Go?</title>
+        <title class="t">Where Did My Taxes Go?</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width,initial-scale=1">
 
@@ -13,37 +13,44 @@
         <script src="js/libs/modernizr-2.0.6.min.js"></script>
     </head>
     <body>
-        <div id="container">
+        <noscript>You need to enable JavaScript to use this website.</noscript>
+        <div id="container hidden">
             <header>
-                <h1>Where Did My Taxes Go?</h1>
+                <h1 class="t">Where Did My Taxes Go?</h1>
+                <div class="lang">
+                    <a data-lang="en">EN</a>
+                    <a data-lang="de">DE</a>
+                </div>
             </header>
             <div id="main" role="main">
-                <p class="question">You are:</p>
+                <p class="question t">You are:</p>
                 <div class="marital">
-                    <button id="single" class="selected">Single</button>
-                    <button id="married">Married</button>
+                    <button id="single" class="selected t">Single</button>
+                    <button id="married" class="t">Married</button>
                 </div>
-                <p class="question">Your reported income for 2010 was: <span id="income"></span></p>
-                <div id="slider"></div>
+                <p class="question"><span class="t">Your reported income for 2010 was: </span><span id="income"></span></p>
+                <input id="slider" type="range" min="10" max="250" />
                 <div><input id="capital" /></div>
-                <p>Annual taxes paid to the city of Zürich: <span id="taxes"></span>, this money lasted the city for <span id="duration"></span> seconds.</p>
-
+                <p id="taxes"></p>
                 <div class="chart"></div>
             </div>
             <footer>
-                <p>What is this?<p>
-                <p>This was done during the <a href="http://make.opendata.ch/">MakeOpenData</a> camp 2011 using <a href="http://mbostock.github.com/d3/">D3.js</a> and the brainpower of <a href="http://local.ch">Tristan</a>, <a href="http://en.wikipedia.org/wiki/Bernd_Fix">Bernd</a>, <a href="http://kpi.at/">Stephan</a>, <a href="http://seld.be">Jordi</a> and Daniel.</p>
-                <p>Data Sources:</p>
+                <p class="t">What is this?<p>
+                <p class="t">This was done during the <a href="http://make.opendata.ch/">MakeOpenData</a> camp 2011 using <a href="http://mbostock.github.com/d3/">D3.js</a> and the brainpower of <a href="http://local.ch">Tristan</a>, <a href="http://en.wikipedia.org/wiki/Bernd_Fix">Bernd</a>, <a href="http://kpi.at/">Stephan</a>, <a href="http://seld.be">Jordi</a> and Daniel.</p>
+                <p class="t">Data Sources:</p>
                 <p class="source"><a href="http://od.ifi.uzh.ch/package/laufende-rechnung-und-investitionsrechnung-2010"><img src="img/ezurich.gif" alt="eZurich" />Laufende Rechnung 2010</a></p>
                 <p class="source"><a href="http://www.steueramt.zh.ch/internet/finanzdirektion/ksta/de/steuerberechnung/stebe_natuerliche_personen/stst_normal.html"><img src="img/zurich.gif" alt="Stadtkanton Steueramt" />Gemeindesteuern</a></p>
 
-                <p>Source Code: <a href="https://github.com/Seldaek/wheredidmytaxesgo">GitHub</a></p>
+                <p><span class="t">Source Code:</span> <a href="https://github.com/Seldaek/wheredidmytaxesgo">GitHub</a></p>
             </footer>
         </div>
 
         <script src="js/libs/d3-2.3.2.js"></script>
         <script src="js/libs/jquery-1.6.2.min.js"></script>
         <script src="js/libs/jquery-ui-1.8.16.custom.min.js"></script>
+        <script src="js/libs/jquery-cookie.js"></script>
+        <script src="js/libs/jquery-tr-1.1.min.js"></script>
+        <script src="js/dict.js"></script>
         <script src="js/main.js"></script>
     </body>
 </html>
