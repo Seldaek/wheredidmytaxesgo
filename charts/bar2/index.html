@@ -5,19 +5,31 @@
     <title>d3.js ~ Calendar View</title>
     <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js?2.3.2"></script>
     <script type="text/javascript" src="http://mbostock.github.com/d3/d3.layout.js?2.3.2"></script>
+    <script src="/js/libs/jquery-1.6.2.min.js"></script>
+    
     <style>
+
     #chart div {
-      font: 10px sans-serif;
-      background-color: steelblue;
       text-align: right;
-      padding: 3px;
-      margin: 1px;
       color: #000;
       white-space: pre;
     }
-    .sub {
-        display: none;
+
+    .head {
+        font: 12px sans-serif;
+        background-color: steelblue;
+        margin: 5px 0px 0px 0px;
+        padding: 10px;
     }
+
+    .sub {
+        font: 10px sans-serif;
+        display: none;
+        background-color: #AAF;
+        margin: 1px 1px 1px 5px;
+        padding: 3px;
+    }
+
     </style>
   </head>
   <body>
@@ -39,8 +51,11 @@
           .style("height", '10px' )
           .attr('class', function(d) { return d.class; } )
           .attr('id', function(d) { return d.id; } )
+          .on('click', function(d, i) { $( '.' + d.id ).toggle() } )
           .text(function(d) { return d.name; });
     });
+
+    $('.section1').toggle();
 
     // Returns a flattened hierarchy containing all leaf nodes under the root.
     function classes(root) {
