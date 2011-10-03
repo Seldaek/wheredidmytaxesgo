@@ -1223,7 +1223,7 @@ function d3_layout_packCircle(nodes) {
   }
 
   // Create node links.
-  nodes.forEach(d3_layout_packLink);
+  $.each(nodes, d3_layout_packLink);
 
   // Create first node.
   a = nodes[0];
@@ -1302,24 +1302,34 @@ function d3_layout_packCircle(nodes) {
   }
 
   // Remove node links.
-  nodes.forEach(d3_layout_packUnlink);
+  $.each(nodes, d3_layout_packUnlink);
 
   return cr;
 }
 
-function d3_layout_packLink(node) {
+function d3_layout_packLink(node, node_each) {
+  if (node_each !== undefined) {
+    node = node_each;
+  }
   node._pack_next = node._pack_prev = node;
 }
 
-function d3_layout_packUnlink(node) {
+function d3_layout_packUnlink(node, node_each) {
+  if (node_each !== undefined) {
+    node = node_each;
+  }
   delete node._pack_next;
   delete node._pack_prev;
 }
 
-function d3_layout_packTree(node) {
-  var children = node.children;
+function d3_layout_packTree(node, node_each) {
+  var children;
+  if (node_each !== undefined) {
+    node = node_each;
+  }
+  children = node.children;
   if (children && children.length) {
-    children.forEach(d3_layout_packTree);
+    $.each(children, d3_layout_packTree);
     node.r = d3_layout_packCircle(children);
   } else {
     node.r = Math.sqrt(node.value);

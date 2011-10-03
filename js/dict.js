@@ -1,5 +1,3 @@
-"use strict";
-
 var translations = {
     de: {
         'Where Did My Taxes Go?': 'Was passiert mit meinen Steuern?',

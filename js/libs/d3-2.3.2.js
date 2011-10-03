@@ -2151,7 +2151,7 @@ function d3_scale_linear(domain, range, interpolate, clamp) {
 
   scale.domain = function(x) {
     if (!arguments.length) return domain;
-    domain = x.map(Number);
+    domain = $.map(x, Number);
     return rescale();
   };
 
