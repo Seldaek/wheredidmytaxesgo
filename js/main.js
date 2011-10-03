@@ -31,12 +31,11 @@
                 .attr('data-width', function (d) { return scale( d.size ) + '%'; })
                 .attr('class', function (d) { return 'active ' + d['class']; } )
                 .attr('id', function (d) { if (typeof d['id'] !== 'undefined') return d['id']; } )
-                .html( function (d, i) { return '<span id="text' + i + '"/>'; } )
+                .html( function (d, i) { return '<span id="text' + i + '"></span>'; } )
                 .append("div")
                 .attr('class', 'legend')
-                .text(function (d) { return d.name; });
+                .attr('data-legend', function (d) { return d.name; });
 
-                //.on('click', function (d, i) { if (typeof d['id'] !== 'undefined') $( '.' + d['id'] ).toggle() } )
             $('.bar-chart div')
                 .css('width', function () {
                     return $(this).data('width');
@@ -46,6 +45,9 @@
                         $('.' + $(this).attr('id')).toggle();
                     }
                 });
+            $('.bar-chart .legend').text(function () {
+                return $(this).data('legend');
+            })
         });
 
     }
