@@ -12,7 +12,7 @@
         bubble = d3.layout.pack();
         chart = d3.select(".chart").append("div").attr("class", "bar-chart");
 
-        d3.json("data_parsing/2010.json", function(json) {
+        $.get("data_parsing/2010.json", function(json) {
 
             var i,
                 filtered = [],
